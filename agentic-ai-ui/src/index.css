@@ -1,3 +1,34 @@
+/* src/index.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Default Theme (Dark) */
+:root {
+  --bg: #1A1A1A;
+  --text: #FFFFFF;
+  --primary: #6B48FF;
+  --secondary: #FF8C38;
+  --accent: #FF5CA8;
+  --red: #F33F32;
+}
+
+/* Light Theme */
+[data-theme="light"] {
+  --bg: #F5F5F5;
+  --text: #333333;
+  --primary: #6B48FF;
+  --secondary: #FF8C38;
+  --accent: #FF5CA8;
+  --red: #F33F32;
+}
+
+/* Sigmasoft Theme */
+[data-theme="sigmasoft"] {
+  --bg: #2A1A5A;
+  --text: #E0E0E0;
+  --primary: #6B48FF;
+  --secondary: #FF8C38;
+  --accent: #FF5CA8;
+  --red: #F33F32;
+}

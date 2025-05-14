@@ -10,7 +10,7 @@ export default function Protocol() {
   console.log('Protocol rendered, selectedAgent:', selectedAgent, 'selectedProtocol:', selectedProtocol);
 
   return (
-    <div className="space-y-6 p-4 bg-yellow-200">
+    <div className="space-y-6 p-4">
       <h1 className="text-2xl font-bold">Protocol Page</h1>
       <p>Selected Agent: {selectedAgent || 'None'}, Protocol: {selectedProtocol || 'None'}</p>
       <ProtocolInfo selectedAgent={selectedAgent} selectedProtocol={selectedProtocol} />

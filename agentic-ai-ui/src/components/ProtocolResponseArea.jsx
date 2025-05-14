@@ -15,9 +15,6 @@ export default function ProtocolResponseArea({ selectedAgent, selectedProtocol }
         responses.map((resp, index) => (
           <div
             key={index}
-            className={`p-3 rounded-lg shadow-sm ${
-              resp.label === 'Overview' ? 'bg-yellow-100' : 'bg-green-100'
-            }`}
           >
             <p className="mb-1">{resp.content}</p>
 
