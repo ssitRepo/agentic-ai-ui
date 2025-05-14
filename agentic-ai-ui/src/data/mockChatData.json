@@ -1,0 +1,54 @@
+{
+  "agent1": [
+    {
+      "question": "How do I track my order?",
+      "answer": {
+        "type": "text",
+        "content": "To track your order, enter your Order ID and check the dashboard for real-time updates.",
+        "cta": {
+          "type": "link",
+          "label": "View Tracking Guide",
+          "url": "https://example.com/order-tracking"
+        }
+      }
+    },
+    {
+      "question": "How do I cancel an order?",
+      "answer": {
+        "type": "text",
+        "content": "Orders can be canceled before they are shipped. Check your order status and submit a cancellation request.",
+        "cta": {
+          "type": "button",
+          "label": "Cancel Order",
+          "action": "start_cancellation"
+        }
+      }
+    }
+  ],
+  "agent2": [
+    {
+      "question": "My device isn't working. What should I do?",
+      "answer": {
+        "type": "text",
+        "content": "Try restarting your device, updating the software, or running a diagnostic.",
+        "cta": {
+          "type": "link",
+          "label": "View Troubleshooting Guide",
+          "url": "https://example.com/troubleshooting"
+        }
+      }
+    },
+    {
+      "question": "I forgot my password. How do I recover my account?",
+      "answer": {
+        "type": "text",
+        "content": "Verify your identity, reset your password, and confirm account access.",
+        "cta": {
+          "type": "button",
+          "label": "Recover Account",
+          "action": "start_recovery"
+        }
+      }
+    }
+  ]
+}
