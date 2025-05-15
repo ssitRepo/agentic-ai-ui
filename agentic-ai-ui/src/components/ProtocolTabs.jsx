@@ -7,21 +7,26 @@ export default function ProtocolTabs() {
 
   return (
     <div className="mb-4">
-      <div className="flex space-x-4 border-b">
+      <div className="flex space-x-4 border-b" style={{ borderColor: 'var(--text-secondary)' }}>
         {tabs.map((tab) => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className={`py-2 px-4 ${
-              activeTab === tab ? 'border-b-2 border-blue-500 font-semibold' : 'text-gray-500'
-            }`}
+            className="py-2 px-4 transition-colors duration-200"
+            style={{
+              color: activeTab === tab ? 'var(--text-tertiary)' : 'var(--text-secondary)',
+              borderBottom: activeTab === tab ? '2px solid var(--primary)' : 'none',
+              fontWeight: activeTab === tab ? '600' : 'normal',
+            }}
           >
             {tab}
           </button>
         ))}
       </div>
-      <div className="mt-4">
-        <p>Content for <strong>{activeTab}</strong> tab.</p>
+      <div className="mt-4" style={{ color: 'var(--text)' }}>
+        <p>
+          Content for <strong>{activeTab}</strong> tab.
+        </p>
       </div>
     </div>
   );
