@@ -4,7 +4,6 @@ import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
 import { Outlet } from "react-router-dom";
 import TopNavWidget from "../components/TopNavWidget";
-import ThemeSwitcher from "../components/ThemeSwitcher";
 
 export default function MainLayout() {
   const [selectedAgent, setSelectedAgent] = useState("");
@@ -30,7 +29,7 @@ export default function MainLayout() {
           setSelectedProtocol={setSelectedProtocol}
         />
 
-        <main className="flex-1 overflow-auto p-4 bg-gray-50">
+        <main className="flex-1 overflow-auto p-4 bg-gray-50 bg-[var(--chat-window-bg)]">
           <Outlet
             context={{
               selectedAgent,
@@ -43,7 +42,6 @@ export default function MainLayout() {
       </div>
 
       <Footer />
-      <ThemeSwitcher />
     </div>
   );
 }

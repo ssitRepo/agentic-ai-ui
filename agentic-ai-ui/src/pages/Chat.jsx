@@ -40,8 +40,8 @@ export default function Chat() {
   };
 
   return (
-    <div className="flex flex-col h-full">
-      <div className="flex-1 overflow-auto p-4">
+    <div className="flex flex-col h-full pt-20 " >
+      <div className="flex-1 overflow-auto">
         <ChatWindow messages={messages} />
       </div>
       <div className="border-t p-4">

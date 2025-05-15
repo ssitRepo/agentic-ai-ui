@@ -12,25 +12,27 @@ export default function TopNavWidget() {
   return (
     <div className="fixed top-20 right-4">
       <div className="relative">
-        {/* Dropdown Toggle Button */}
+        {/* Toggle Button */}
         <button
           onClick={toggleDropdown}
-          className="flex items-center px-4 py-2 bg-dark-bg/90 text-text-light rounded-xl border border-gray-700/20 hover:bg-gradient-to-r hover:from-sigmasoft-purple/60 hover:to-sigmasoft-pink/60 transition-all duration-300 shadow-md focus:outline-none focus:ring-2 focus:ring-sigmasoft-purple/50"
+          className="flex items-center px-4 py-2 bg-[var(--bg)] text-[var(--text)] rounded-xl border border-gray-700/20 transition-all duration-300 shadow-md focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/50"
           aria-label="Switch between Chat and Protocol"
         >
           <span className="mr-2 hidden sm:inline">Mode</span>
-          <FaChevronDown className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+          <FaChevronDown
+            className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+          />
         </button>
 
         {/* Dropdown Menu */}
         {isOpen && (
-          <div className="absolute top-12 right-0 w-40 bg-dark-bg border border-gray-700/20 rounded-xl shadow-lg overflow-hidden animate-fadeIn">
+          <div className="absolute top-12 right-0 w-40 bg-[var(--bg)] border border-gray-700/20 rounded-xl shadow-lg overflow-hidden">
             <NavLink
               to="/"
               onClick={() => setIsOpen(false)}
               className={({ isActive }) =>
-                `flex items-center px-4 py-2 text-text-light/90 hover:bg-gradient-to-r hover:from-sigmasoft-purple/60 hover:to-sigmasoft-pink/60 transition-all duration-200 ${
-                  isActive ? 'bg-gradient-to-r from-sigmasoft-purple/30 to-sigmasoft-orange/30' : ''
+                `flex items-center px-4 py-2 text-[var(--text)] transition-colors duration-200 ${
+                  isActive ? 'font-semibold' : ''
                 }`
               }
             >
@@ -41,13 +43,13 @@ export default function TopNavWidget() {
               to="/protocol"
               onClick={() => setIsOpen(false)}
               className={({ isActive }) =>
-                `flex items-center px-4 py-2 text-text-light/90 hover:bg-gradient-to-r hover:from-sigmasoft-purple/60 hover:to-sigmasoft-pink/60 transition-all duration-200 ${
-                  isActive ? 'bg-gradient-to-r from-sigmasoft-purple/30 to-sigmasoft-orange/30' : ''
+                `flex items-center px-4 py-2 text-[var(--text)] transition-colors duration-200 ${
+                  isActive ? 'font-semibold' : ''
                 }`
               }
             >
               <FaBook className="w-5 h-5 mr-2" />
-              Protocol
+              Perspective
             </NavLink>
           </div>
         )}
