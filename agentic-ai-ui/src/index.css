@@ -1,3 +1,65 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Default Theme (Dark) */
+:root {
+  --bg: #1f1f1f;
+  --text: #FFFFFF;
+  --text-secondary: #a3a3a3;
+  --text-tertiary: #000000;
+  --primary: #6B48FF;
+  --secondary: #FF8C38;
+  --accent: #FF5CA8;
+  --red: #F33F32;
+
+  /* Chat-specific */
+  --chat-window-bg: #1f1f1f;
+  --chat-user-bg: #3c3c3c;
+  --chat-user-text: #ffffff;
+  --chat-agent-bg: #2a2a2a;
+  --chat-agent-text: #ffffff;
+}
+
+/* Light Theme */
+[data-theme="light"] {
+  --bg: #f5f5f5;
+  --text: #333333;
+  --text-secondary: #666666;
+  --text-tertiary: #000000;
+  --primary: #6B48FF;
+  --secondary: #FF8C38;
+  --accent: #FF5CA8;
+  --red: #F33F32;
+
+  --chat-window-bg: #ffffff;
+  --chat-user-bg: #e5e7eb; /* light gray */
+  --chat-user-text: #1f1f1f;
+  --chat-agent-bg: #f3f4f6;
+  --chat-agent-text: #1f1f1f;
+}
+
+/* Sigmasoft Theme */
+[data-theme="sigmasoft"] {
+  --bg: #2A1A5A;
+  --text: #ffffff;
+  --text-secondary: #bfbfbf;
+  --text-tertiary: #000000;
+  --primary: #6B48FF;
+  --secondary: #FF8C38;
+  --accent: #FF5CA8;
+  --red: #F33F32;
+
+  --chat-window-bg: #1b123a;
+  --chat-user-bg: #432c85;
+  --chat-user-text: #ffffff;
+  --chat-agent-bg: #341c64;
+  --chat-agent-text: #e0e0e0;
+}
+
+/* 🌈 Gradient Background for Sigmasoft */
+[data-theme="sigmasoft"] .sigmasoft-gradient {
+  background: linear-gradient(135deg, #5410bf, #F33F32, #FBBF24);
+  background-color: rgba(0, 0, 0, 0.21); /* black overlay */
+  background-blend-mode: multiply;
+}

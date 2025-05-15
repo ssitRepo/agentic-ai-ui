@@ -18,15 +18,22 @@ export default function ChatInput({ onSend, disabled }) {
         value={input}
         onChange={(e) => setInput(e.target.value)}
         placeholder="Type your message..."
-        className="flex-1 border rounded px-3 py-2"
+        className="flex-1 rounded px-3 py-2 border"
+        style={{
+          backgroundColor: 'var(--chat-window-bg)',
+          color: 'var(--text)',
+          borderColor: 'var(--text-secondary)',
+        }}
         disabled={disabled}
       />
       <button
         type="submit"
         disabled={disabled}
-        className={`px-4 py-2 rounded text-white ${
-          disabled ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'
-        }`}
+        className="px-4 py-2 rounded text-white"
+        style={{
+          backgroundColor: disabled ? 'var(--text-secondary)' : 'var(--primary)',
+          cursor: disabled ? 'not-allowed' : 'pointer',
+        }}
       >
         Send
       </button>
