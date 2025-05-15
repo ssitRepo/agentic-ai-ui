@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="max-w-screen-xl mx-auto flex items-center justify-center space-y-4 sm:space-y-0">
         <div className="text-center">
           <p className="text-text text-sm">
-            © 2025 Agentic AI. All rights reserved.
+            © 2025  Sigmasoft Inc. All rights reserved.
           </p>
         </div>
       </div>

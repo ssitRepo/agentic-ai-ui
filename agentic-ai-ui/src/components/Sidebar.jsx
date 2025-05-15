@@ -159,12 +159,12 @@ export default function Sidebar({
               {/* Clear Cache Button (for Protocol page) */}
               {isProtocolPage && (
                 <button
-                  onClick={() => localStorage.clear()}
-                  className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg border border-[var(--primary)] text-[var(--text)] hover:bg-[var(--primary)]/10 transition"
-                >
-                  <FaTrashAlt className="text-sm" />
-                  <span className="text-sm">Clear Cache</span>
-                </button>
+                onClick={() => window.location.reload()}
+                className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-[var(--primary)] text-white hover:opacity-90 transition"
+              >
+                <FaSyncAlt className="text-sm" />
+                <span className="text-sm">Refresh Perspective</span>
+              </button>
               )}
             </li>
           )}

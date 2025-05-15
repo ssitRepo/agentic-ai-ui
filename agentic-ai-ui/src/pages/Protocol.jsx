@@ -12,7 +12,7 @@ export default function Protocol() {
   return (
     <div className="space-y-6 p-4">
       <h1 className="text-2xl font-bold">Protocol Page</h1>
-      <p>Selected Agent: {selectedAgent || 'None'}, Protocol: {selectedProtocol || 'None'}</p>
+      <p className="text-sm text-[var(--text-secondary)]">Selected Agent: {selectedAgent || 'None'}, Protocol: {selectedProtocol || 'None'}</p>
       <ProtocolInfo selectedAgent={selectedAgent} selectedProtocol={selectedProtocol} />
       <ProtocolTabs selectedAgent={selectedAgent} selectedProtocol={selectedProtocol} />
       <ProtocolResponseArea selectedAgent={selectedAgent} selectedProtocol={selectedProtocol} />

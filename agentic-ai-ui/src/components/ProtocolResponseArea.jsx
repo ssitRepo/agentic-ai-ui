@@ -44,8 +44,8 @@ export default function ProtocolResponseArea({ selectedAgent, selectedProtocol }
       ) : (
         <p style={{ color: 'var(--red)' }}>
           {selectedAgent && selectedProtocol
-            ? 'No responses available for this protocol'
-            : 'Please select an agent and protocol'}
+            ? 'No responses available for this perspective'
+            : 'Please select an agent and perspective'}
         </p>
       )}
     </div>
