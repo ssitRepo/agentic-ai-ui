@@ -13,7 +13,7 @@ export default function ProtocolInfo({ selectedAgent, selectedProtocol }) {
           <p>{protocol.description}</p>
         </>
       ) : (
-        <p style={{ color: 'var(--red)' }}>Please select an agent and protocol</p>
+        <p style={{ color: 'var(--red)' }}>Please select an agent and perspective</p>
       )}
     </div>
   );

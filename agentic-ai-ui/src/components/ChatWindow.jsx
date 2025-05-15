@@ -12,7 +12,7 @@ const themedAnswerStyles =
     return (
       <div className="p-6 text-center text-sm text-[var(--text-secondary)]">
         <p className="mb-2">👋 Hello! I’m your Agentic assistant.</p>
-        <p>Ask me anything or choose a protocol to begin.</p>
+        <p>Ask me anything or choose a perspective to begin.</p>
       </div>
     );
   }

@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import White from '../assets/White Colour.png';
 import Black from '../assets/Colour Logo.png';
-import avatar from '../assets/avtar.png';
+import avatar from '../assets/profile.png';
 import { FaPalette, FaMoon, FaSun, FaPaintRoller } from 'react-icons/fa';
 
 export default function Header() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [themeDropdownOpen, setThemeDropdownOpen] = useState(false);
   const [currentTheme, setCurrentTheme] = useState('dark');
+
+  const profileRef = useRef(null);
+  const themeRef = useRef(null);
 
   // Detect theme changes
   useEffect(() => {
@@ -16,10 +19,8 @@ export default function Header() {
       setCurrentTheme(theme);
     };
 
-    // Initial theme
     updateTheme();
 
-    // Listen for theme changes
     const observer = new MutationObserver(updateTheme);
     observer.observe(document.documentElement, {
       attributes: true,
@@ -29,14 +30,36 @@ export default function Header() {
     return () => observer.disconnect();
   }, []);
 
+  // Close dropdowns if clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        profileRef.current &&
+        !profileRef.current.contains(event.target)
+      ) {
+        setDropdownOpen(false);
+      }
+
+      if (
+        themeRef.current &&
+        !themeRef.current.contains(event.target)
+      ) {
+        setThemeDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   const handleToggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
-    setThemeDropdownOpen(false); // Close theme dropdown when profile dropdown opens
+    setThemeDropdownOpen(false);
   };
 
   const handleToggleThemeDropdown = () => {
     setThemeDropdownOpen(!themeDropdownOpen);
-    setDropdownOpen(false); // Close profile dropdown when theme dropdown opens
+    setDropdownOpen(false);
   };
 
   const handleKeyDown = (e) => {
@@ -57,28 +80,38 @@ export default function Header() {
     setCurrentTheme(newTheme);
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
-    setThemeDropdownOpen(false); // Close dropdown after selection
+    setThemeDropdownOpen(false);
   };
 
-  // Select logo based on theme
   const logoSrc = currentTheme === 'light' ? Black : White;
 
   return (
     <nav className="bg-[var(--bg)] border-b border-gray-100/20 shadow z-50 fixed top-0 left-0 w-full sigmasoft-gradient">
-      <div className="flex items-center justify-between py-4 px-0">
-        {/* Left: Logo with Minimal Margin */}
-        <a href="/" className="ml-8">
-          <img
-            src={logoSrc}
-            alt="Logo"
-            className="h-8 w-auto"
-          />
-        </a>
+      <div className="flex items-center justify-between py-4 px-0 w-full">
+        
+        {/* Left: Logo */}
+        <div className="flex-1 ml-8">
+          <a href="/">
+            <img
+              src={logoSrc}
+              alt="Logo"
+              className="h-8 w-auto"
+            />
+          </a>
+        </div>
 
-        {/* Right: Profile and Theme Switcher Dropdowns */}
-        <div className="flex items-center space-x-3 mr-4">
-          {/* Theme Switcher Dropdown */}
-          <div className="relative">
+        {/* Center: Agentify Title */}
+        <div className="flex-1 text-center">
+          <span className="text-sm font-semibold text-text">
+            Agentify Chat Assistant - Ask Me Anything
+          </span>
+        </div>
+
+        {/* Right: Theme & Profile */}
+        <div className="flex-1 flex justify-end items-center space-x-3 mr-4">
+
+          {/* Theme Dropdown */}
+          <div className="relative" ref={themeRef}>
             <button
               onClick={handleToggleThemeDropdown}
               onKeyDown={handleThemeKeyDown}
@@ -124,7 +157,7 @@ export default function Header() {
           </div>
 
           {/* Profile Dropdown */}
-          <div className="relative">
+          <div className="relative" ref={profileRef}>
             <img
               src={avatar}
               alt="User Profile"
@@ -138,23 +171,12 @@ export default function Header() {
 
             {dropdownOpen && (
               <div className="absolute right-0 mt-2 w-48 bg-bg rounded-lg shadow-lg z-60 border border-gray-700/20">
-                <div className="px-4 py-3 border-b border-gray-700/20">
+                <div className="px-4 py-2 border-b border-gray-700/20">
                   <span className="block text-sm text-text">
                     Bonnie Green
                   </span>
-                  <span className="block text-sm text-text/50 truncate">
-                    name@yourmail.com
-                  </span>
                 </div>
-                <ul className="py-2">
-                  <li>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-text hover:bg-primary/20 transition-all duration-200"
-                    >
-                      Dashboard
-                    </a>
-                  </li>
+                <ul>
                   <li>
                     <a
                       href="#"
