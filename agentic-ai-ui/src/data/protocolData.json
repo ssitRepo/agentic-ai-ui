@@ -2,7 +2,7 @@
     "agents": [
       {
         "id": "agent1",
-        "name": "Order Management Bot",
+        "name": "Order Management Agent",
         "protocols": [
           {
             "id": "order-tracking",
@@ -58,7 +58,7 @@
       },
       {
         "id": "agent2",
-        "name": "Technical Support Bot",
+        "name": "Technical Support Agent",
         "protocols": [
           {
             "id": "troubleshooting",
