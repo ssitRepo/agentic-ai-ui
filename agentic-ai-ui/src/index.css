@@ -56,3 +56,9 @@
 }
 
 
+/* 🌈 Gradient Background for Sigmasoft */
+[data-theme="sigmasoft"] .sigmasoft-gradient {
+  background: linear-gradient(135deg, #5410bf, #F33F32, #FBBF24);
+  background-color: rgba(0, 0, 0, 0.21); /* black overlay */
+  background-blend-mode: multiply;
+}
