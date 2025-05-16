@@ -1,0 +1,10 @@
+/* src/styles/CopyIcon.css */
+
+.copy-icon {
+    transition: color 0.3s ease;
+  }
+  
+  .copy-icon:hover {
+    opacity: 0.7;
+  }
+  

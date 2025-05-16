@@ -1,11 +1,12 @@
+// src/components/ChatWindow.jsx
 import React from 'react';
+import CopyIcon from '../assets/CopyIcon'; // Import the CopyIcon component
 
 export default function ChatWindow({ messages }) {
   const themedQuestionStyles =
-  'bg-[var(--chat-user-bg)] text-[var(--chat-user-text)] text-right ml-auto';
-const themedAnswerStyles =
-  'bg-[var(--chat-agent-bg)] text-[var(--chat-agent-text)] text-left';
-
+    'bg-[var(--chat-user-bg)] text-[var(--chat-user-text)] text-right ml-auto';
+  const themedAnswerStyles =
+    'text-[var(--chat-agent-text)] text-left';  // No background for answers
 
   // Default welcome message when no chat exists
   if (!messages || messages.length === 0) {
@@ -18,39 +19,30 @@ const themedAnswerStyles =
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 overflow-y-auto max-h-[calc(100vh-150px)] hide-scrollbar">
+      {/* Chat messages */}
       {messages.map((msg) => (
         <div
           key={msg.id}
-          className={`p-3 rounded-lg max-w-xl text-sm ${
+          className={`p-3 rounded-lg w-max max-w-[500px] text-sm ${
             msg.type === 'question' ? themedQuestionStyles : themedAnswerStyles
           }`}
         >
-          <p>{msg.content}</p>
+          {/* Render message content with preserved formatting */}
+          <div
+            className="message-content"
+            dangerouslySetInnerHTML={{ __html: msg.content }}
+          />
 
-          {/* CTA rendering for answers */}
-          {msg.type === 'answer' && msg.cta && (
-            <div className="mt-2">
-              {msg.cta.type === 'link' ? (
-                <a
-                  href={msg.cta.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block mt-1 text-[var(--primary)] underline hover:opacity-80 transition"
-                >
-                  {msg.cta.label}
-                </a>
-              ) : msg.cta.type === 'button' ? (
-                <button
-                  onClick={() =>
-                    alert(`Performing action: ${msg.cta.action}`)
-                  }
-                  className="mt-1 px-3 py-1 bg-[var(--primary)] text-white rounded hover:opacity-90 transition"
-                >
-                  {msg.cta.label}
-                </button>
-              ) : null}
-            </div>
+          {/* Copy Button */}
+          {msg.type === 'answer' && (
+            <button
+              onClick={() => navigator.clipboard.writeText(msg.content)}
+              className="flex items-center gap-1 text-xs opacity-100 transition pt-1"
+              title="Copy response"
+            >
+              <CopyIcon className="copy-icon" />
+            </button>
           )}
         </div>
       ))}
