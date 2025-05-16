@@ -10,6 +10,7 @@ import {
 import mockData from "../data/protocolData.json";
 
 export default function Sidebar({
+  isSidebarOpen,
   selectedAgent,
   setSelectedAgent,
   selectedProtocol,
@@ -41,68 +42,24 @@ export default function Sidebar({
   const selectedAgentObj = agents.find((agent) => agent.id === selectedAgent);
 
   return (
-    <aside className="w-64 bg-[var(--bg)] border-r p-4 pt-20">
-      <div className="h-full px-2 pb-4 overflow-y-auto">
-        <ul className="space-y-4 text-sm font-medium text-[var(--text)]">
-          {(isChatPage || isProtocolPage) && (
-            <li className="space-y-4">
-
-              {/* Agent Dropdown */}
-              <div>
-                <div
-                  onClick={() => setAgentsOpen(!agentsOpen)}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter" || e.key === " ") {
-                      e.preventDefault();
-                      setAgentsOpen(!agentsOpen);
-                    }
-                  }}
-                  className="flex items-center justify-between px-3 py-2 rounded-lg bg-[var(--bg)] border-2 border-[var(--primary)]/50 hover:border-[var(--primary)] transition-all cursor-pointer"
-                  role="button"
-                  tabIndex={0}
-                >
-                  <span>
-                    {selectedAgent
-                      ? agents.find((a) => a.id === selectedAgent)?.name
-                      : "Choose an agent"}
-                  </span>
-                  <FaChevronDown
-                    className={`w-4 h-4 transition-transform ${
-                      agentsOpen ? "rotate-180" : ""
-                    }`}
-                  />
-                </div>
-                {agentsOpen && (
-                  <ul className="mt-2 rounded-lg border-2 border-[var(--primary)]/40 bg-[var(--bg)] max-h-40 overflow-y-auto">
-                    {agents.map((agent) => (
-                      <li
-                        key={agent.id}
-                        onClick={() => handleAgentChange(agent.id)}
-                        className={`flex items-center px-3 py-2 hover:bg-[var(--primary)]/20 transition cursor-pointer ${
-                          selectedAgent === agent.id
-                            ? "bg-[var(--primary)]/10"
-                            : ""
-                        }`}
-                        role="option"
-                        tabIndex={0}
-                      >
-                        <FaUser className="w-4 h-4 mr-2" />
-                        {agent.name}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-
-              {/* Protocol Dropdown */}
-              {isProtocolPage && selectedAgent && (
+    <aside
+      className={`transition-all duration-500 ease-in-out bg-[var(--bg)] border-r pt-20 ${
+        isSidebarOpen ? "w-64 px-4" : "w-0 px-0"
+      } overflow-hidden`}
+    >
+      {isSidebarOpen && (
+        <div className="h-full px-2 pb-4 overflow-y-auto">
+          <ul className="space-y-4 text-sm font-medium text-[var(--text)]">
+            {(isChatPage || isProtocolPage) && (
+              <li className="space-y-4">
+                {/* Agent Dropdown */}
                 <div>
                   <div
-                    onClick={() => setProtocolsOpen(!protocolsOpen)}
+                    onClick={() => setAgentsOpen(!agentsOpen)}
                     onKeyDown={(e) => {
                       if (e.key === "Enter" || e.key === " ") {
                         e.preventDefault();
-                        setProtocolsOpen(!protocolsOpen);
+                        setAgentsOpen(!agentsOpen);
                       }
                     }}
                     className="flex items-center justify-between px-3 py-2 rounded-lg bg-[var(--bg)] border-2 border-[var(--primary)]/50 hover:border-[var(--primary)] transition-all cursor-pointer"
@@ -110,66 +67,114 @@ export default function Sidebar({
                     tabIndex={0}
                   >
                     <span>
-                      {selectedProtocol
-                        ? selectedAgentObj?.protocols.find(
-                            (p) => p.id === selectedProtocol
-                          )?.name
-                        : "Choose a perspective"}
+                      {selectedAgent
+                        ? agents.find((a) => a.id === selectedAgent)?.name
+                        : "Choose an agent"}
                     </span>
                     <FaChevronDown
                       className={`w-4 h-4 transition-transform ${
-                        protocolsOpen ? "rotate-180" : ""
+                        agentsOpen ? "rotate-180" : ""
                       }`}
                     />
                   </div>
-                  {protocolsOpen && (
+                  {agentsOpen && (
                     <ul className="mt-2 rounded-lg border-2 border-[var(--primary)]/40 bg-[var(--bg)] max-h-40 overflow-y-auto">
-                      {selectedAgentObj?.protocols.map((protocol) => (
+                      {agents.map((agent) => (
                         <li
-                          key={protocol.id}
-                          onClick={() => handleProtocolChange(protocol.id)}
+                          key={agent.id}
+                          onClick={() => handleAgentChange(agent.id)}
                           className={`flex items-center px-3 py-2 hover:bg-[var(--primary)]/20 transition cursor-pointer ${
-                            selectedProtocol === protocol.id
+                            selectedAgent === agent.id
                               ? "bg-[var(--primary)]/10"
                               : ""
                           }`}
                           role="option"
                           tabIndex={0}
                         >
-                          <FaCogs className="w-4 h-4 mr-2" />
-                          {protocol.name}
+                          <FaUser className="w-4 h-4 mr-2" />
+                          {agent.name}
                         </li>
                       ))}
                     </ul>
                   )}
                 </div>
-              )}
 
-              {/* Refresh Button (for Chat page) */}
-              {isChatPage && (
-                <button
-                  onClick={() => window.location.reload()}
-                  className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-[var(--primary)] text-white hover:opacity-90 transition"
-                >
-                  <FaSyncAlt className="text-sm" />
-                  <span className="text-sm">Refresh Chat</span>
-                </button>
-              )}
+                {/* Protocol Dropdown */}
+                {isProtocolPage && selectedAgent && (
+                  <div>
+                    <div
+                      onClick={() => setProtocolsOpen(!protocolsOpen)}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" || e.key === " ") {
+                          e.preventDefault();
+                          setProtocolsOpen(!protocolsOpen);
+                        }
+                      }}
+                      className="flex items-center justify-between px-3 py-2 rounded-lg bg-[var(--bg)] border-2 border-[var(--primary)]/50 hover:border-[var(--primary)] transition-all cursor-pointer"
+                      role="button"
+                      tabIndex={0}
+                    >
+                      <span>
+                        {selectedProtocol
+                          ? selectedAgentObj?.protocols.find(
+                              (p) => p.id === selectedProtocol
+                            )?.name
+                          : "Choose a perspective"}
+                      </span>
+                      <FaChevronDown
+                        className={`w-4 h-4 transition-transform ${
+                          protocolsOpen ? "rotate-180" : ""
+                        }`}
+                      />
+                    </div>
+                    {protocolsOpen && (
+                      <ul className="mt-2 rounded-lg border-2 border-[var(--primary)]/40 bg-[var(--bg)] max-h-40 overflow-y-auto">
+                        {selectedAgentObj?.protocols.map((protocol) => (
+                          <li
+                            key={protocol.id}
+                            onClick={() => handleProtocolChange(protocol.id)}
+                            className={`flex items-center px-3 py-2 hover:bg-[var(--primary)]/20 transition cursor-pointer ${
+                              selectedProtocol === protocol.id
+                                ? "bg-[var(--primary)]/10"
+                                : ""
+                            }`}
+                            role="option"
+                            tabIndex={0}
+                          >
+                            <FaCogs className="w-4 h-4 mr-2" />
+                            {protocol.name}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                )}
 
-              {/* Clear Cache Button (for Protocol page) */}
-              {isProtocolPage && (
-                <button
-                onClick={() => window.location.reload()}
-                className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-[var(--primary)] text-white hover:opacity-90 transition"
-              >
-                <FaSyncAlt className="text-sm" />
-                <span className="text-sm">Refresh Perspective</span>
-              </button>
-              )}
-            </li>
-          )}
-        </ul>
-      </div>
+                {/* Buttons */}
+                {isChatPage && (
+                  <button
+                    onClick={() => window.location.reload()}
+                    className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-[var(--primary)] text-white hover:opacity-90 transition"
+                  >
+                    <FaSyncAlt className="text-sm" />
+                    <span className="text-sm">Refresh Chat</span>
+                  </button>
+                )}
+
+                {isProtocolPage && (
+                  <button
+                    onClick={() => window.location.reload()}
+                    className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-[var(--primary)] text-white hover:opacity-90 transition"
+                  >
+                    <FaSyncAlt className="text-sm" />
+                    <span className="text-sm">Refresh Perspective</span>
+                  </button>
+                )}
+              </li>
+            )}
+          </ul>
+        </div>
+      )}
     </aside>
   );
 }

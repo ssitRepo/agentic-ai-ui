@@ -2,9 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import White from '../assets/White Colour.png';
 import Black from '../assets/Colour Logo.png';
 import avatar from '../assets/profile.png';
-import { FaPalette, FaMoon, FaSun, FaPaintRoller } from 'react-icons/fa';
+import { FaBars, FaPalette, FaMoon, FaSun, FaPaintRoller } from 'react-icons/fa';
 
-export default function Header() {
+export default function Header({ isSidebarOpen, setIsSidebarOpen }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [themeDropdownOpen, setThemeDropdownOpen] = useState(false);
   const [currentTheme, setCurrentTheme] = useState('dark');
@@ -87,18 +87,21 @@ export default function Header() {
 
   return (
     <nav className="bg-[var(--bg)] border-b border-gray-100/20 shadow z-50 fixed top-0 left-0 w-full sigmasoft-gradient">
-      <div className="flex items-center justify-between py-4 px-0 w-full">
-        
-        {/* Left: Logo */}
-        <div className="flex-1 ml-8">
-          <a href="/">
-            <img
-              src={logoSrc}
-              alt="Logo"
-              className="h-8 w-auto"
-            />
-          </a>
-        </div>
+    <div className="flex items-center justify-between py-4 px-0 w-full">
+      
+      {/* Left: Sidebar Toggle + Logo */}
+      <div className="flex-1 ml-4 flex items-center space-x-4">
+        <button
+          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+          className="text-text hover:text-primary transition-all p-2"
+          aria-label="Toggle Sidebar"
+        >
+          <FaBars className="w-5 h-5" />
+        </button>
+        <a href="/">
+          <img src={logoSrc} alt="Logo" className="h-8 w-auto" />
+        </a>
+      </div>
 
         {/* Center: Agentify Title */}
         <div className="flex-1 text-center">
