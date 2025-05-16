@@ -8,9 +8,11 @@ import TopNavWidget from "../components/TopNavWidget";
 export default function MainLayout() {
   const [selectedAgent, setSelectedAgent] = useState("");
   const [selectedProtocol, setSelectedProtocol] = useState("");
-  const [theme, setTheme] = useState("light"); // Add state for theme
+  const [theme, setTheme] = useState("light");
+  
+  // Set the sidebar to be closed by default
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);  // Set initial state to false
 
-  // Set the theme on the document root (html element)
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
@@ -18,19 +20,21 @@ export default function MainLayout() {
   return (
     <div className="flex flex-col h-screen">
       <TopNavWidget />
-      <Header />
+      <Header
+        isSidebarOpen={isSidebarOpen}
+        setIsSidebarOpen={setIsSidebarOpen}
+      />
       <div className="flex flex-1 overflow-hidden">
         <Sidebar
+          isSidebarOpen={isSidebarOpen}
           selectedAgent={selectedAgent}
           setSelectedAgent={setSelectedAgent}
           selectedProtocol={selectedProtocol}
           setSelectedProtocol={setSelectedProtocol}
         />
         <main
-          className="flex-1 overflow-auto p-4 bg-gray-50"
-          style={{
-            backgroundColor: "var(--chat-window-bg)", // Use CSS variable directly
-          }}
+          className="flex-1 overflow-auto p-4"
+          style={{ backgroundColor: "var(--chat-window-bg)" }}
         >
           <Outlet
             context={{
