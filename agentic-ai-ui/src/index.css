@@ -63,3 +63,14 @@
   background-color: rgba(0, 0, 0, 0.21); /* black overlay */
   background-blend-mode: multiply;
 }
+
+/* Hide scrollbar but allow scrolling */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+

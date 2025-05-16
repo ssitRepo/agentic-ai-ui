@@ -5,8 +5,7 @@ import mockResponses from '../data/mockChatData.json';
 import { useOutletContext } from 'react-router-dom';
 
 export default function Chat() {
-  const { selectedAgent} = useOutletContext();
-
+  const { selectedAgent } = useOutletContext();
   const [messages, setMessages] = useState([]);
 
   const handleSend = (userInput) => {
@@ -20,14 +19,11 @@ export default function Chat() {
       type: 'question',
       content: userInput,
     };
-    console.log('Question:', question);
 
     const agentResponses = mockResponses[selectedAgent] || [];
     const found = agentResponses.find(
       (item) => item.question.toLowerCase() === userInput.toLowerCase()
     );
-
-    console.log('Found:', found);
 
     const response = {
       id: Date.now() + '-a',
@@ -39,12 +35,18 @@ export default function Chat() {
     setMessages((prev) => [...prev, question, response]);
   };
 
+  const isEmpty = messages.length === 0;
+
   return (
-    <div className="flex flex-col h-full pt-20 " >
-      <div className="flex-1 overflow-auto">
+    <div className={`flex flex-col h-full ${isEmpty ? 'justify-center' : ''}`}>
+      <div
+        className={`flex-1 overflow-auto px-4 ${
+          isEmpty ? 'flex flex-col items-center justify-center text-center' : 'flex flex-col-reverse'
+        }`}
+      >
         <ChatWindow messages={messages} />
       </div>
-      <div className="border-t p-4">
+      <div className={`border-t p-4 ${isEmpty ? 'w-full max-w-xl mx-auto' : ''}`}>
         <ChatInput onSend={handleSend} />
       </div>
     </div>
