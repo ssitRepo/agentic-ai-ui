@@ -93,7 +93,7 @@ export default function Header({ isSidebarOpen, setIsSidebarOpen }) {
         <div className="flex-1 ml-4 flex items-center space-x-4">
           <button
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-            className="text-text hover:text-primary transition-all p-2 md:hidden"
+            className="text-text hover:text-primary transition-all p-2"
             aria-label="Toggle Sidebar"
           >
             <FaBars className="w-5 h-5" />
