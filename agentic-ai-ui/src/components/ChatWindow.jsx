@@ -6,12 +6,11 @@ export default function ChatWindow({ messages }) {
   const themedQuestionStyles =
     'bg-[var(--chat-user-bg)] text-[var(--chat-user-text)] text-right ml-auto';
   const themedAnswerStyles =
-    'text-[var(--chat-agent-text)] text-left';  // No background for answers
+    'text-[var(--chat-agent-text)] text-left'; // No background for answers
 
-  // Default welcome message when no chat exists
   if (!messages || messages.length === 0) {
     return (
-      <div className="p-6 text-center text-sm text-[var(--text-secondary)]">
+      <div className="w-full max-w-3xl mx-auto px-4 py-6 text-center text-sm text-[var(--text-secondary)]">
         <p className="mb-2">👋 Hello! I’m your Agentic assistant.</p>
         <p>Ask me anything or choose a perspective to begin.</p>
       </div>
@@ -19,8 +18,7 @@ export default function ChatWindow({ messages }) {
   }
 
   return (
-    <div className="space-y-4 overflow-y-auto max-h-[calc(100vh-150px)] hide-scrollbar">
-      {/* Chat messages */}
+    <div className="w-full max-w-3xl mx-auto px-4 space-y-4 overflow-y-auto max-h-[calc(100vh-150px)] hide-scrollbar">
       {messages.map((msg) => (
         <div
           key={msg.id}
@@ -28,13 +26,11 @@ export default function ChatWindow({ messages }) {
             msg.type === 'question' ? themedQuestionStyles : themedAnswerStyles
           }`}
         >
-          {/* Render message content with preserved formatting */}
           <div
             className="message-content"
             dangerouslySetInnerHTML={{ __html: msg.content }}
           />
 
-          {/* Copy Button */}
           {msg.type === 'answer' && (
             <button
               onClick={() => navigator.clipboard.writeText(msg.content)}
@@ -49,3 +45,4 @@ export default function ChatWindow({ messages }) {
     </div>
   );
 }
+

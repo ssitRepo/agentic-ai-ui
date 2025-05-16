@@ -9,7 +9,9 @@ export default function MainLayout() {
   const [selectedAgent, setSelectedAgent] = useState("");
   const [selectedProtocol, setSelectedProtocol] = useState("");
   const [theme, setTheme] = useState("light");
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  
+  // Set the sidebar to be closed by default
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);  // Set initial state to false
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);

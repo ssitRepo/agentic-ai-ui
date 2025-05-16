@@ -44,7 +44,7 @@ export default function Sidebar({
   return (
     <aside
       className={`transition-all duration-500 ease-in-out bg-[var(--bg)] border-r pt-20 ${
-        isSidebarOpen ? "w-64 px-4" : "w-0 px-0"
+        isSidebarOpen ? "w-full sm:w-64 px-4" : "w-0 sm:w-0 px-0"
       } overflow-hidden`}
     >
       {isSidebarOpen && (
