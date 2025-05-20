@@ -1,9 +1,9 @@
 import React from 'react';
 import mockData from '../data/protocolData.json';
 
-export default function ProtocolInfo({ selectedAgent, selectedProtocol }) {
-  const agent = mockData.agents?.find(a => a.id === selectedAgent);
-  const protocol = agent?.protocols?.find(p => p.id === selectedProtocol);
+export default function ProtocolInfo({ selectedProtocol }) {
+  // Find the selected protocol directly from the mockData
+  const protocol = mockData.protocols?.find(p => p.id === selectedProtocol);
 
   return (
     <div style={{ color: 'var(--text)' }}>
@@ -13,7 +13,9 @@ export default function ProtocolInfo({ selectedAgent, selectedProtocol }) {
           <p>{protocol.description}</p>
         </>
       ) : (
-        <p style={{ color: 'var(--red)' }}>Please select an agent and perspective</p>
+        <p style={{ color: 'var(--red)' }}>
+          Please select a perspective
+        </p>
       )}
     </div>
   );
