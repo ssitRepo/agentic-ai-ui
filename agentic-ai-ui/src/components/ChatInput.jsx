@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import RefreshIcon from "../assets/RefreshIcon"; // Adjust the path if needed
 
-export default function ChatInput({ onSend, disabled }) {
+export default function ChatInput({ onSend, disabled, onRefresh }) {
   const [input, setInput] = useState('');
 
   const handleSubmit = (e) => {
@@ -32,20 +33,37 @@ export default function ChatInput({ onSend, disabled }) {
           }}
           disabled={disabled}
         />
+
+        {/* 🔄 Refresh button */}
+        <button
+          type="button"
+          onClick={onRefresh}
+          className="ml-2 p-2 rounded-md transition flex items-center justify-center"
+          style={{
+            backgroundColor: 'transparent',
+            cursor: disabled ? 'not-allowed' : 'pointer',
+          }}
+          disabled={disabled}
+          aria-label="Refresh"
+        >
+          <RefreshIcon color="var(--text-secondary)" />
+        </button>
+
+        {/* Send button */}
         <button
           type="submit"
           disabled={disabled || !input.trim()}
-          className="ml-3 p-2 rounded-md transition flex items-center justify-center"
+          className="ml-2 p-2 rounded-md transition flex items-center justify-center"
           style={{
             backgroundColor:
               disabled || !input.trim()
-                ? 'var(--text-primary)'
+                ? 'var(--text-secondary)'
                 : 'var(--primary)',
             cursor:
               disabled || !input.trim() ? 'not-allowed' : 'pointer',
           }}
+          aria-label="Send"
         >
-          {/* Right arrow SVG */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-5 w-5 text-white"

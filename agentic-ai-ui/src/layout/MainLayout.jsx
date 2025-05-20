@@ -4,14 +4,16 @@ import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
 import { Outlet } from "react-router-dom";
 import TopNavWidget from "../components/TopNavWidget";
+import mockData from "../data/protocolData.json"
+import MainSelectorDropdown from "../components/MainSelectorDropdown";
 
 export default function MainLayout() {
   const [selectedAgent, setSelectedAgent] = useState("");
   const [selectedProtocol, setSelectedProtocol] = useState("");
-  const [theme, setTheme] = useState("light");
-  
+  const [theme, setTheme] = useState("sigmasoft");
+
   // Set the sidebar to be closed by default
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);  // Set initial state to false
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Set initial state to false
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
@@ -20,6 +22,14 @@ export default function MainLayout() {
   return (
     <div className="flex flex-col h-screen">
       <TopNavWidget />
+      <MainSelectorDropdown
+        agents={mockData.agents}
+        protocols={mockData.protocols} // assuming you separate this from agents now
+        selectedAgent={selectedAgent}
+        setSelectedAgent={setSelectedAgent}
+        selectedProtocol={selectedProtocol}
+        setSelectedProtocol={setSelectedProtocol}
+      />
       <Header
         isSidebarOpen={isSidebarOpen}
         setIsSidebarOpen={setIsSidebarOpen}
