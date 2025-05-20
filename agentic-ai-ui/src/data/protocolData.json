@@ -1,116 +1,218 @@
 {
-    "agents": [
-      {
-        "id": "agent1",
-        "name": "Order Management Agent",
-        "protocols": [
-          {
-            "id": "order-tracking",
-            "name": "Order Tracking",
-            "description": "Guides users through tracking their order status.",
-            "tabs": [
-              {
-                "label": "Overview",
-                "content": "This protocol explains how to check real-time order updates.",
-                "cta": {
-                  "type": "link",
-                  "label": "View Tracking Guide",
-                  "url": "https://example.com/order-tracking"
-                }
-              },
-              {
-                "label": "Steps",
-                "content": "1. Enter order ID. 2. Check status on dashboard. 3. Contact support if delayed.",
-                "cta": {
-                  "type": "button",
-                  "label": "Track Order",
-                  "action": "open_tracking"
-                }
+  "agents": [
+    {
+      "id": "agent1",
+      "name": "Order Management Agent",
+      "protocols": [
+        {
+          "id": "order-tracking",
+          "name": "Order Tracking",
+          "description": "Guides users through tracking their order status.",
+          "tabs": [
+            {
+              "label": "Overview",
+              "content": "This protocol explains how to check real-time order updates.",
+              "cta": {
+                "type": "link",
+                "label": "View Tracking Guide",
+                "url": "https://example.com/order-tracking"
               }
-            ]
-          },
-          {
-            "id": "order-cancellation",
-            "name": "Order Cancellation",
-            "description": "Details the process to cancel an order before shipping.",
-            "tabs": [
-              {
-                "label": "Overview",
-                "content": "This protocol covers cancellation eligibility and timelines.",
-                "cta": {
-                  "type": "link",
-                  "label": "View Cancellation Policy",
-                  "url": "https://example.com/cancellation-policy"
-                }
-              },
-              {
-                "label": "Steps",
-                "content": "1. Confirm order status. 2. Submit cancellation request. 3. Receive confirmation.",
-                "cta": {
-                  "type": "button",
-                  "label": "Cancel Order",
-                  "action": "start_cancellation"
-                }
+            },
+            {
+              "label": "Steps",
+              "content": "1. Enter order ID. 2. Check status on dashboard. 3. Contact support if delayed.",
+              "cta": {
+                "type": "button",
+                "label": "Track Order",
+                "action": "open_tracking"
               }
-            ]
+            }
+          ]
+        },
+        {
+          "id": "order-cancellation",
+          "name": "Order Cancellation",
+          "description": "Details the process to cancel an order before shipping.",
+          "tabs": [
+            {
+              "label": "Overview",
+              "content": "This protocol covers cancellation eligibility and timelines.",
+              "cta": {
+                "type": "link",
+                "label": "View Cancellation Policy",
+                "url": "https://example.com/cancellation-policy"
+              }
+            },
+            {
+              "label": "Steps",
+              "content": "1. Confirm order status. 2. Submit cancellation request. 3. Receive confirmation.",
+              "cta": {
+                "type": "button",
+                "label": "Cancel Order",
+                "action": "start_cancellation"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "agent2",
+      "name": "Technical Support Agent",
+      "protocols": [
+        {
+          "id": "troubleshooting",
+          "name": "Device Troubleshooting",
+          "description": "Assists users in resolving common device issues.",
+          "tabs": [
+            {
+              "label": "Overview",
+              "content": "This protocol provides steps to diagnose and fix device problems.",
+              "cta": {
+                "type": "link",
+                "label": "View Troubleshooting Guide",
+                "url": "https://example.com/troubleshooting"
+              }
+            },
+            {
+              "label": "Steps",
+              "content": "1. Restart device. 2. Check for updates. 3. Run diagnostic tool.",
+              "cta": {
+                "type": "button",
+                "label": "Start Troubleshooting",
+                "action": "open_diagnostic"
+              }
+            }
+          ]
+        },
+        {
+          "id": "account-recovery",
+          "name": "Account Recovery",
+          "description": "Helps users regain access to their accounts.",
+          "tabs": [
+            {
+              "label": "Overview",
+              "content": "This protocol outlines account recovery options and requirements.",
+              "cta": {
+                "type": "link",
+                "label": "View Recovery Guide",
+                "url": "https://example.com/account-recovery"
+              }
+            },
+            {
+              "label": "Steps",
+              "content": "1. Verify identity. 2. Reset password. 3. Confirm account access.",
+              "cta": {
+                "type": "button",
+                "label": "Recover Account",
+                "action": "start_recovery"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "protocols": [
+    {
+      "id": "order-tracking",
+      "name": "Order Tracking",
+      "description": "Guides users through tracking their order status.",
+      "tabs": [
+        {
+          "label": "Overview",
+          "content": "This protocol explains how to check real-time order updates.",
+          "cta": {
+            "type": "link",
+            "label": "View Tracking Guide",
+            "url": "https://example.com/order-tracking"
           }
-        ]
-      },
-      {
-        "id": "agent2",
-        "name": "Technical Support Agent",
-        "protocols": [
-          {
-            "id": "troubleshooting",
-            "name": "Device Troubleshooting",
-            "description": "Assists users in resolving common device issues.",
-            "tabs": [
-              {
-                "label": "Overview",
-                "content": "This protocol provides steps to diagnose and fix device problems.",
-                "cta": {
-                  "type": "link",
-                  "label": "View Troubleshooting Guide",
-                  "url": "https://example.com/troubleshooting"
-                }
-              },
-              {
-                "label": "Steps",
-                "content": "1. Restart device. 2. Check for updates. 3. Run diagnostic tool.",
-                "cta": {
-                  "type": "button",
-                  "label": "Start Troubleshooting",
-                  "action": "open_diagnostic"
-                }
-              }
-            ]
-          },
-          {
-            "id": "account-recovery",
-            "name": "Account Recovery",
-            "description": "Helps users regain access to their accounts.",
-            "tabs": [
-              {
-                "label": "Overview",
-                "content": "This protocol outlines account recovery options and requirements.",
-                "cta": {
-                  "type": "link",
-                  "label": "View Recovery Guide",
-                  "url": "https://example.com/account-recovery"
-                }
-              },
-              {
-                "label": "Steps",
-                "content": "1. Verify identity. 2. Reset password. 3. Confirm account access.",
-                "cta": {
-                  "type": "button",
-                  "label": "Recover Account",
-                  "action": "start_recovery"
-                }
-              }
-            ]
+        },
+        {
+          "label": "Steps",
+          "content": "1. Enter order ID. 2. Check status on dashboard. 3. Contact support if delayed.",
+          "cta": {
+            "type": "button",
+            "label": "Track Order",
+            "action": "open_tracking"
           }
-        ]
-      }
-    ]
-  }
+        }
+      ]
+    },
+    {
+      "id": "order-cancellation",
+      "name": "Order Cancellation",
+      "description": "Details the process to cancel an order before shipping.",
+      "tabs": [
+        {
+          "label": "Overview",
+          "content": "This protocol covers cancellation eligibility and timelines.",
+          "cta": {
+            "type": "link",
+            "label": "View Cancellation Policy",
+            "url": "https://example.com/cancellation-policy"
+          }
+        },
+        {
+          "label": "Steps",
+          "content": "1. Confirm order status. 2. Submit cancellation request. 3. Receive confirmation.",
+          "cta": {
+            "type": "button",
+            "label": "Cancel Order",
+            "action": "start_cancellation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "name": "Device Troubleshooting",
+      "description": "Assists users in resolving common device issues.",
+      "tabs": [
+        {
+          "label": "Overview",
+          "content": "This protocol provides steps to diagnose and fix device problems.",
+          "cta": {
+            "type": "link",
+            "label": "View Troubleshooting Guide",
+            "url": "https://example.com/troubleshooting"
+          }
+        },
+        {
+          "label": "Steps",
+          "content": "1. Restart device. 2. Check for updates. 3. Run diagnostic tool.",
+          "cta": {
+            "type": "button",
+            "label": "Start Troubleshooting",
+            "action": "open_diagnostic"
+          }
+        }
+      ]
+    },
+    {
+      "id": "account-recovery",
+      "name": "Account Recovery",
+      "description": "Helps users regain access to their accounts.",
+      "tabs": [
+        {
+          "label": "Overview",
+          "content": "This protocol outlines account recovery options and requirements.",
+          "cta": {
+            "type": "link",
+            "label": "View Recovery Guide",
+            "url": "https://example.com/account-recovery"
+          }
+        },
+        {
+          "label": "Steps",
+          "content": "1. Verify identity. 2. Reset password. 3. Confirm account access.",
+          "cta": {
+            "type": "button",
+            "label": "Recover Account",
+            "action": "start_recovery"
+          }
+        }
+      ]
+    }
+  ]
+}
