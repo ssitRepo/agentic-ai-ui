@@ -93,7 +93,7 @@ export default function Header({ isSidebarOpen, setIsSidebarOpen }) {
         <div className="flex-1 ml-4 flex items-center space-x-4">
           <button
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-            className="text-text hover:text-primary transition-all p-2"
+            className="sm:block md:hidden text-text hover:text-primary transition-all p-2"
             aria-label="Toggle Sidebar"
           >
             <FaBars className="w-5 h-5" />
@@ -108,8 +108,8 @@ export default function Header({ isSidebarOpen, setIsSidebarOpen }) {
         </div>
 
         {/* Center: Agentify Title */}
-        <div className="hidden md:flex flex-1 text-center">
-          <span className="text-sm font-semibold text-text">
+        <div className="hidden md:block absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <span className="text-sm font-semibold text-text whitespace-nowrap">
             Agentify Chat Assistant - Ask Me Anything
           </span>
         </div>
