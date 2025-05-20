@@ -12,7 +12,7 @@ export default function TopNavWidget() {
   };
 
   return (
-    <div className="fixed top-20 right-4 z-50">
+    <div className="fixed top-20 right-4 z-50 hidden sm:block">
       <button
         onClick={toggleMode}
         className="relative flex w-40 sm:w-48 h-10 bg-[var(--bg)] border border-gray-700/20 rounded-full shadow-md transition-all duration-300 overflow-hidden focus:outline-none"
