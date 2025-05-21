@@ -63,7 +63,7 @@ export default function Sidebar({
                 }`}
               >
                 <FaCogs className="w-4 h-4" />
-                <span>Protocol</span>
+                <span>Perspective</span>
               </button>
             </li>
 
@@ -174,7 +174,7 @@ export default function Sidebar({
                 )}
 
                 {/* Refresh Button */}
-                {(isChatPage || isProtocolPage) && (
+                {/* {(isChatPage || isProtocolPage) && (
                   <button
                     onClick={() => window.location.reload()}
                     className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-[var(--primary)] text-white hover:opacity-90 transition"
@@ -184,7 +184,7 @@ export default function Sidebar({
                       {isChatPage ? "Refresh Chat" : "Refresh Perspective"}
                     </span>
                   </button>
-                )}
+                )} */}
               </li>
             )}
           </ul>
