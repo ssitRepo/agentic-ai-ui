@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { FaSyncAlt, FaCogs, FaChevronDown, FaUser, FaTimes } from "react-icons/fa";
+import {
+  FaSyncAlt,
+  FaCogs,
+  FaChevronDown,
+  FaUser,
+  FaTimes,
+} from "react-icons/fa";
 import mockData from "../data/protocolData.json";
 
 export default function Sidebar({
@@ -33,9 +39,9 @@ export default function Sidebar({
 
   return (
     <aside
-      className={`transition-all duration-500 ease-in-out bg-[var(--bg)] border-r pt-20
-        ${isSidebarOpen ? "w-full px-4" : "w-0 px-0"}
-        sm:hidden overflow-hidden relative`}
+      className={`fixed top-0 left-0 h-full z-50 transition-all duration-500 ease-in-out bg-[var(--bg)] border-r pt-5
+    ${isSidebarOpen ? "w-64 px-4" : "w-0 px-0"}
+    sm:hidden overflow-hidden`}
     >
       {isSidebarOpen && (
         <div className="h-full px-2 pb-4 overflow-y-auto relative">
