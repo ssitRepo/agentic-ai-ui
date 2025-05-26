@@ -37,9 +37,10 @@ export default function MainLayout() {
       <div className="flex flex-1 overflow-hidden">
         <Sidebar
           isSidebarOpen={isSidebarOpen}
+          setIsSidebarOpen={setIsSidebarOpen} // ✅ Add this line
           selectedAgent={selectedAgent}
           setSelectedAgent={setSelectedAgent}
-          selectedProtocol={selectedProtocol}
+          selectedProtocol={selectedProtocol} 
           setSelectedProtocol={setSelectedProtocol}
         />
         <main
