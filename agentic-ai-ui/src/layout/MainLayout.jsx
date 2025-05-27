@@ -4,7 +4,7 @@ import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
 import { Outlet } from "react-router-dom";
 import TopNavWidget from "../components/TopNavWidget";
-import mockData from "../data/protocolData.json"
+import mockData from "../data/protocolData.json";
 import MainSelectorDropdown from "../components/MainSelectorDropdown";
 
 export default function MainLayout() {
@@ -40,11 +40,11 @@ export default function MainLayout() {
           setIsSidebarOpen={setIsSidebarOpen} // ✅ Add this line
           selectedAgent={selectedAgent}
           setSelectedAgent={setSelectedAgent}
-          selectedProtocol={selectedProtocol} 
+          selectedProtocol={selectedProtocol}
           setSelectedProtocol={setSelectedProtocol}
         />
         <main
-          className="flex-1 overflow-auto p-4"
+          className="flex-1 overflow-hidden p-4 pt-16" // pt-16 = 4rem = 64px
           style={{ backgroundColor: "var(--chat-window-bg)" }}
         >
           <Outlet
